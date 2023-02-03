@@ -1,21 +1,20 @@
-import React from 'react'
-import Intro from './components/Intro'
-import Portfolio from './components/Portfolio'
-import Timeline from './components/Timeline'
-import Contact from './components/Contact'
-import Footer from './components/Footer'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";
+import Welcome from "./features/auth/Welcome";
+import Login from "./features/auth/Login";
+import RequireAuth from "./features/auth/RequireAuth";
 
 function App() {
-
   return (
-    <div className="App">
-      <Intro />
-      <Portfolio />
-      <Timeline />
-      <Contact />
-      <Footer />
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<RequireAuth />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
